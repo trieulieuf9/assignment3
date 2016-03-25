@@ -32,7 +32,11 @@
         <tr>
           <td> <%= type.name %> </td>
           <td> <%= number_to_currency(type.price, unit: 'VND ', precision: 0) %> </td>
-          <td> <%= select_tag('quantity', options_for_select(0..10)) %></td> 
+          <%if type.max_quantity < 10%>
+            <td> <%= select_tag('quantity', options_for_select(0..type.max_quantity)) %></td> 
+          <%else%>
+            <td> <%= select_tag('quantity', options_for_select(0..10)) %></td> 
+          <%end%>
         </tr>
         <% end %> 
       </table>
@@ -40,7 +44,7 @@
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-5">
-      <button class="btn btn-success btn-lg btn-block"> Buy </button>
+      <button action="submit", class="btn btn-success btn-lg btn-block"> Buy </button>
     </div>
   <div>
 </div>  

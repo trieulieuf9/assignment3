@@ -5,4 +5,13 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :extended_html_description, :venue, :category, :starts_at
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
+
+  def self.search(search)
+	  if search
+	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+	  else
+	    find(:all)
+	  end
+	end
+
 end

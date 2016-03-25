@@ -1,0 +1,21 @@
+<br>
+<h1>Create Venue</h1>
+<ul>
+    <%= form_for @venue do |f| %>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+     <li>
+      <%= f.label :full_address %>
+      <%= f.text_field :full_address %>
+      </li>
+      <li>
+      <%= f.label :region_id %>
+      <%= f.text_field :region_id %>
+      </li>
+      <%= f.submit "Create Venue", class: "btn btn-primary" %>
+</ul>
+    <% end %>
+
+    

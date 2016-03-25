@@ -1,18 +1,54 @@
 <div class='events-header' style='background-image: url(<%= header_background_image_url %>)'>
   <div class="container">
     <h2> Discover upcoming events </h2>
-    <form>
-      <input type="text" class="form-control" name="search" placeholder="Search for events, shows, courses...">
-    </form>
+
+    <%= form_tag root_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
   </div>
 </div>
-<div class="container-fluid events-list">
-    <% @events.in_groups_of(3) do |g| %>
-      <div class="row">
-        <% g.compact.each do |e| %>
-            <%= render partial: 'card', locals: {event: e} %>
-        <% end %>
-      </div>  
-    <% end %>
-  </div>
-</div>
+  <!-- Searched event will be displayed here --> 
+<%if @search_events%>
+  <% @search_events.each do |e|%>
+    <div class="card">
+    <%= image_tag e.hero_image_url ,class:"card-img-top"%>
+    <div class="card-block">
+      <h4 class="card-title"><%=e.name%></h4>
+      <p class="card-text"> QWE QWE QWE QWE QWE QWE QW EQW QWE QWE QWE </p>
+    </div>
+    </div>
+  <% end %> 
+<%else%>
+<!-- All event will be displayed here, if you are logged in --> 
+<% @events.each do |e|%>
+    <div class="card">
+    <%= image_tag e.hero_image_url ,class:"card-img-top"%>
+    <div class="card-block">
+      <h4 class="card-title"><%=e.name%></h4>
+      <p class="card-text"> QWE QWE QWE QWE QWE QWE QW EQW QWE QWE QWE </p>
+      <%= link_to "Details", event_path(e), class:"btn btn-primary"%>
+      <!-- if you are log in, you will see this published button --> 
+      <% if current_user %>
+        <%if(e.published)%>
+          <div class="alert alert-info">
+            Published
+          </div>
+        <%else%>
+        <!-- if event has ticket_type, allow user to publish, if not, disable the publish button --> 
+          <% if has_ticket_type?(e.id) %>
+            <%=link_to "Publish this Event", events_path(:publish => true, :event_id => e.id),
+            class:"button button-primary",method: "POST"%>
+          <%else%>
+            <button type="button" class="btn btn-secondary btn-lg" disabled>Publish this Event</button>
+            <%end%>
+  
+        <%end%>
+      <%end%>
+    </div>
+    </div>
+  <% end %>
+<%end%>

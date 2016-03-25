@@ -1,0 +1,23 @@
+<br>
+<h1>Create Ticket Type for Event </h1>
+<ul>
+    <%= form_for @ticket_type do |t| %>
+    <li>
+      <%= t.label :name %>
+      <%= t.text_field :name %>
+    </li>
+    <li>
+      <%= t.label :price %>
+      <%= t.number_field :price %>
+     </li>
+      <li>
+      <%= t.label :max_quantity %>
+      <%= t.number_field :max_quantity %>
+      </li>
+      <li>
+      <%= t.label "Event Id" %>
+      <%= t.number_field :event_id %>
+      </li>
+      <%= t.submit "Create Ticket Type", class: "btn btn-primary" %>
+</ul>
+    <% end %>

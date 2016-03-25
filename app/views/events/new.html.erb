@@ -1,0 +1,29 @@
+<br>
+<h1>Create Event</h1>
+<ul>
+    <%= form_for @event do |f| %>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+    <li>
+      <%= f.label :hero_image_url %>
+      <%= f.text_field :hero_image_url %>
+     </li>
+     <li>
+      <%= f.label :extended_html_description %>
+      <%= f.text_field :extended_html_description %>
+      </li>
+      <li>
+      <%= f.label :venue_id %>
+      <%= f.text_field :venue_id %>
+      </li>
+      <li>
+      <%= f.label :category_id %>
+      <%= f.text_field :category_id %>
+      </li>
+      <%= f.submit "Create Event", class: "btn btn-primary" %>
+</ul>
+    <% end %>
+
+    

@@ -52,8 +52,8 @@ e = Event.create({
   name: 'Cảm ơn Đời - Live Concert Đan Trường', 
   venue: dan_venue,
   category: Category.find_by(name: 'Entertainment'),
-  starts_at: DateTime.parse('Sat, 16 Jan 2016, 8:00 PM+0700'),
-  ends_at: DateTime.parse('Sat, 16 Jan 2016, 10:30 PM+0700'),  
+  starts_at: DateTime.parse('Sat, 16 Jun 2016, 8:00 PM+0700'),
+  ends_at: DateTime.parse('Sat, 16 Jun 2016, 10:30 PM+0700'),  
   hero_image_url: 'https://az810747.vo.msecnd.net/eventcover/2015/12/11/C68636.jpg?w=1040&maxheight=400&mode=crop&anchor=topcenter',
   extended_html_description: <<-DESC
   <p style="text-align:justify"> </p>
