@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use pg as the database for Active Record
