@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    if(params[:published])
+    if(params[:publish])
       @event = Event.find_by_id(params[:event_id])
       @event.published = true
       @event.save
@@ -26,6 +26,8 @@ class EventsController < ApplicationController
       @event = Event.new event_params
       @event.starts_at = DateTime.parse('Sun, 17 Jun 2016, 8:00 PM+0700')
       @event.ends_at = DateTime.parse('Sun, 17 Jun 2016, 9:00 PM+0700')
+      @event.published = false
+      @event.created_by = session[:user_id]
       if @event.save
         flash[:success] = "Create Event Successfully"
         redirect_to root_path
@@ -34,6 +36,22 @@ class EventsController < ApplicationController
         render 'new'
       end
     end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+      @event = Event.find(params[:id])
+      @event.published = false
+      if @event.update(event_params)
+        flash[:success] = "Edit Event Successfully"
+        redirect_to my_events_path
+      else
+        flash.now[:error] = "Error: #{@event.errors.full_messages.to_sentence}"
+        render 'edit'
+      end
   end
 
 

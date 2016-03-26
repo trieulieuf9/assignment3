@@ -1,4 +1,5 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
+
   root 'events#index'
 
   resources :events do
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :sessions
   resources :ticket_types
   resources :venues
+
+  get 'my_events' => 'my_events#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

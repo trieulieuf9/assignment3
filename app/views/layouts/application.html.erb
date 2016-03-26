@@ -27,7 +27,8 @@
     <span><%= link_to "Log Out", session_path(session[:user_id]), method: "delete"%>|</span>
     <span><%= link_to " Create Event ", new_event_path%>| </span>
     <span><%= link_to " Create Ticket Type ", new_ticket_type_path%>| </span>
-    <span><%= link_to " Create Venue ", new_venue_path %> </span>
+    <span><%= link_to " Create Venue ", new_venue_path %>| </span>
+    <span><%= link_to " My Event ", my_events_path %> </span>
   <%end%>
   </div>
   <%if flash.any? %>
